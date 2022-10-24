@@ -120,11 +120,18 @@ export function VectorExecuteButton() {
   const queryEditor = editorContext.queryEditor;
   const responseEditor = editorContext.responseEditor;
   const variableEditor = editorContext.variableEditor;
+  let vrlInput = {};
+  try {
+    vrlInput = {
+      program: queryEditor?.getValue(),
+      event: JSON.parse(variableEditor?.getValue() || '{}'),
+    };
+  } catch (error) {
+    console.log(
+      'error parsing the variableEditor contents as JSON object, this could happen if the localStorage had previous content',
+    );
+  }
 
-  const vrlInput = {
-    program: queryEditor?.getValue(),
-    event: JSON.parse(variableEditor?.getValue() || '{}'),
-  };
   const operations = queryEditor?.operations || [];
   const buttonProps = {
     type: 'button' as const,
