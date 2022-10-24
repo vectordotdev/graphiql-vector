@@ -1,6 +1,8 @@
 import React from 'react';
-import GraphiQL from 'graphiql';
+import GraphiQL from './Temp';
 import 'graphiql/graphiql.min.css';
+import 'graphiql/graphiql.css';
+import '@graphiql/react/dist/style.css';
 
 const App = () => (
   <GraphiQL
