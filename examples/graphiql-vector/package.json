@@ -1,10 +1,10 @@
 {
-  "name": "example-graphiql-create-react-app",
+  "name": "example-graphiql-vector",
   "version": "0.1.11-alpha.8",
   "private": true,
   "dependencies": {
-    "graphiql": "file:../../packages/graphiql",
     "@graphiql/react": "file:../../packages/graphiql-react",
+    "graphiql": "file:../../packages/graphiql",
     "graphql": "^16.4.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^5.2.1",
+    "webpack-dev-server": "^4.11.1",
     "worker-loader": "^2.0.0"
   }
 }
