@@ -1,6 +1,15 @@
-## GraphiQL `create-react-app` Example
+## GraphiQL Playground with vrl-js
 
-This example demonstrates how to transpile your own custom ES6 and typescript GraphiQL implementation bootstrapped with `create-react-app`, no config needed.
+This example demonstrates modifying the graphiql front end React implementation with VRL, simulating how a full-fledged
+React app could be built around VRL.
+
+Although the codebase is functional and runs VRL fairly smoothly, it was ultimately not the code repository we (Vector Processing
+Team) opted to take due to the large monorepo that we would have to rewrite/modify/strip-down to leverage a nice UI for the
+VRL web playground.
+
+This will serve instead as an inspiration for the playground.
+
+![demo](./demo.png)
 
 ### Setup
 
