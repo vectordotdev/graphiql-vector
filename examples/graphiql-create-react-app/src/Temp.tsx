@@ -152,7 +152,14 @@ export function VectorExecuteButton() {
           init().then(() => {
             let res = run_vrl(vrlInput);
             console.log('[run_vrl]: ', res);
-            responseEditor?.setValue(JSON.stringify(res, null, '\t'));
+            console.log(responseEditor);
+            if (res['output'] != undefined) {
+              responseEditor?.setValue(
+                JSON.stringify(res['result'], null, '\t'),
+              );
+            } else if (res['msg'] != null) {
+              responseEditor?.setValue(JSON.stringify(res['msg'], null));
+            }
           });
         }}
       />
@@ -285,6 +292,27 @@ export function GraphiQLInterface(props: GraphiQLInterfaceProps) {
 
   const editorContext = useEditorContext({ nonNull: true });
   let container = editorContext.queryEditor?.getWrapperElement();
+  if (editorContext.queryEditor != null) {
+    // the below code will remove the linting feature without completely
+    // stripping out the type hinting from graphql, that procedure is still being
+    // ran in the background
+    console.log(editorContext.queryEditor);
+    editorContext.queryEditor.setOption('mode', 'coffeescript');
+    editorContext.queryEditor.options.lint = { options: { bitwise: true } };
+    editorContext.queryEditor.getAllMarks().forEach(marker => marker.clear());
+    // editorContext.queryEditor.markText({line: 0, ch: 0}, {line: 100, ch: 255}, {className: "CodeMirror-lint-mark"});
+    // while(editorContext.queryEditor.state.lint.marked.length > 0) {
+    //   editorContext.queryEditor.state.lint.marked.pop();
+    // }
+    // editorContext.queryEditor.state.lint.options.lintOnChange = false;
+    // editorContext.queryEditor.state.lint.options.tooltips = false;
+    // editorContext.queryEditor.state.lint.linterOptions.schema = null;
+
+    // editorContext.queryEditor.options.hintOptions = null;
+    // editorContext.queryEditor.options.lint = "graphql";
+    // editorContext.queryEditor.options.mode = "coffeescript";
+  }
+
   // if (container) {
   //     let temp = VectorEditor(container);
   //     if (temp) {
